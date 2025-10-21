@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minwen & Anna - 6 Months</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,12 +12,17 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
             overflow-x: hidden;
             min-height: 100vh;
+            line-height: 1.6;
         }
         
         .container {
@@ -41,6 +47,7 @@
             color: transparent;
             animation: gradient 3s ease infinite;
             background-size: 400% 400%;
+            font-weight: 800;
         }
         
         @keyframes gradient {
@@ -135,6 +142,14 @@
             width: 50%;
             padding: 1.5rem;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .timeline-item:nth-child(odd) {
@@ -153,6 +168,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.05);
         }
         
         .timeline-content::before {
@@ -202,6 +222,14 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .message.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .message h2 {
@@ -256,14 +284,30 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* 手机端适配 */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
             
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
             .couple-container {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+            
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+            
+            .heart {
+                font-size: 2.5rem;
+                transform: rotate(90deg);
             }
             
             .timeline::before {
@@ -274,6 +318,7 @@
                 width: 100%;
                 left: 0 !important;
                 padding-left: 70px;
+                padding-right: 20px;
             }
             
             .timeline-item:nth-child(odd) .timeline-content::after,
@@ -281,6 +326,97 @@
                 left: -10px;
                 right: auto;
             }
+            
+            .message {
+                padding: 1.5rem;
+                margin: 3rem auto;
+            }
+            
+            .message h2 {
+                font-size: 1.8rem;
+            }
+            
+            .message p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 2rem 0 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+            
+            .name {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline-content {
+                padding: 1rem;
+            }
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ff6b6b, #4d96ff);
+            border-radius: 10px;
+        }
+        
+        /* 导航按钮 */
+        .nav-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #4d96ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-button i {
+            color: white;
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -347,6 +483,10 @@
         </footer>
     </div>
 
+    <div class="nav-button" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
         // Create floating hearts
         function createHearts() {
@@ -367,28 +507,51 @@
             }
         }
         
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show/hide scroll to top button
+        function toggleScrollButton() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 300) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        }
+        
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             createHearts();
             
-            // Add scroll animation to timeline items
+            // Add scroll animation to timeline items and message
             const timelineItems = document.querySelectorAll('.timeline-item');
+            const message = document.querySelector('.message');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('visible');
                     }
                 });
             }, { threshold: 0.1 });
             
             timelineItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(50px)';
-                item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(item);
             });
+            
+            observer.observe(message);
+            
+            // Scroll to top button
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            scrollBtn.addEventListener('click', scrollToTop);
+            window.addEventListener('scroll', toggleScrollButton);
+            toggleScrollButton(); // Initial check
         });
     </script>
 </body>
