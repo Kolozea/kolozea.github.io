@@ -1,299 +1,395 @@
-<html><!DOCTYPE HTML>
-<!--[if IE 6]>
-<html id="ie6" class="ie ie6 lt-ie9">
-<![endif]-->
-<!--[if IE 7]>
-<html id="ie7" class="ie ie7 lt-ie9">
-<![endif]-->
-<!--[if IE 8]>
-<html id="ie8" class="ie ie8 lt-ie9">
-<![endif]-->
-<!--[if gte IE 9]>
-<html class="ie ie9">
-<![endif]-->
-<!--[if !(IE)]><!-->
-<html>
-<!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv='Pragma' content='no-cache' />
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="author" content="Anna and 周闵文">
-	<meta name="description" content="For baby wife">
-	<title>周闵文 LOVE Anna</title>
-	<link rel="stylesheet" href="all.min.css" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minwen & Anna - 6 Months</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .couple-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .person {
+            text-align: center;
+            perspective: 1000px;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .minwen .avatar {
+            background: linear-gradient(45deg, #4d96ff, #6bcf7f);
+            box-shadow: 0 10px 30px rgba(77, 150, 255, 0.4);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(180deg); }
+            100% { transform: translateY(0) rotateY(360deg); }
+        }
+        
+        .name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .heart {
+            font-size: 3rem;
+            color: #ff6b6b;
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff6b6b, #4d96ff);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            width: 50%;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #ff6b6b, #4d96ff);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background: #4d96ff;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffd93d;
+        }
+        
+        .message {
+            text-align: center;
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffd93d;
+        }
+        
+        .message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: float-up 8s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .couple-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="flowtime">
-		<div class="ft-section section-1" data-id="section-1">
-			<div id="/section-1/page-1" class="ft-page page-1" data-id="page-1">
-				<p class="text1"><span id="text-75" contenteditable="true">Anna</span> ❤ <span id="text-76" contenteditable="true">周闵文</span> <span id="text-77" contenteditable="true">Forever</span></p>
-				<p class="text2">Press Keyboard "↓" <span id="text-78" contenteditable="true">Baby</span></p>
-			</div>
-			<div id="/section-1/page-2" class="ft-page page-2" data-id="page-2">
-				<p class="top-text" id="text-1" contenteditable="true">At first when I meet you baby</p>
-				<img src="img/1.webp" tppabs="img/1.webp"  alt="At first when I meet you baby" />
-			</div>
-			<div id="/section-1/page-3" class="ft-page page-3 left-img" data-id="page-3">
-				<h2 class="text" id="text-2" contenteditable="true">I just found that you are kind, naughty and kawaii</h2>
-				<img src="img/2.webp" tppabs="img/2.webp"  alt="I just found that you are kind, naughty and kawaii"/>
-			</div>
-			<div id="/section-1/page-4" class="ft-page page-4 full-img" data-id="page-4">
-				<h2 class="center-text" id="text-3" contenteditable="true">We called each other vampires</h2>
-				
-			</div>
-		</div>
-		<div class="ft-section section-2" data-id="section-2">
-			<div id="/section-2/page-1" class="ft-page page-5 full-img" data-id="page-1">
-				<h2 class="center-text" id="text-4" contenteditable="true">But I know you are the max level one baby</h2>
-				
-			</div>
-			<div id="/section-2/page-2" class="ft-page page-6" data-id="page-2">
-				<h2 class="center-text" id="text-5" contenteditable="true" style="z-index: 999;">cuz you always stayed up too late(That's not good baby)</h2>
-				
-			</div>
-			<div id="/section-2/page-3" class="ft-page page-7" data-id="page-3">
-				<h3 id="text-6" contenteditable="true">After we know each other about two weeks I had a fever</h3>
-				<img src="img/5.png" tppabs="img/5.png"  alt="After we know each other about two weeks I had a fever"/>
-			</div>
-			<div id="/section-2/page-4" class="ft-page page-8 full-img" data-id="page-4">
-				<h3 id="text-7" contenteditable="true">You cared about me and worried about me so much</h3>
-				<img src="" tppabs="" alt="" />
-			</div>
-			<div id="/section-2/page-5" class="ft-page page-9" data-id="page-5">
-				<h3 id="text-8" contenteditable="true">You told me to drink some medicine</h3>
-				<img src="" tppabs="" />
-			</div>
-			<div id="/section-2/page-6" class="ft-page page-10" data-id="page-6">
-				<h3 id="text-9" contenteditable="true">to take a nap</h3>
-				<img src="img/7.png" tppabs="img/7.png" />
-			</div>
-		</div>
-		<div class="ft-section section-3" data-id="section-3">
-			<div id="/section-3/page-1" class="ft-page page-11 full-img" data-id="page-1">
-				<h3 id="text-10" contenteditable="true">to put a cool fever patch on my forehead</h3>
-				<img src="" tppabs=""  />
-			</div>
-			<div id="/section-3/page-2" class="ft-page page-12" data-id="page-2">
-				<h3><span id="text-11" contenteditable="true">You hoped me to get well soon my baby</span><br /><span id="text-12" contenteditable="true"></span></h3>
-				<img src="img/8.png" tppabs="img/8.png" />
-			</div>
-			<div id="/section-3/page-3" class="ft-page page-13" data-id="page-3">
-				<img src="img/9.png" tppabs="img/9.png" alt='' />
-				<h3 id="text-13" contenteditable="true">You were such kind, sweet and kawaii</h3>
-			</div>
-			<div id="/section-3/page-4" class="ft-page page-14 left-img" data-id="page-4">
-				<h3 id="text-14" contenteditable="true">And you told me that you were not chatting with someone if you replied to me late</h3>
-				<img src="img/iali46.jpg" tppabs="img/iali46.jpg" />
-			</div>
-			<div id="/section-3/page-5" class="ft-page page-15 left-img" data-id="page-5">
-				<h3><span id="text-15" contenteditable="true">That made me overthink baby</span><br /><span id="text-16" contenteditable="true"></span></h3>
-				<img src="img/10.png" tppabs="img/10.png" />
-			</div>
-			<div id="/section-3/page-6" class="ft-page page-16 left-img" data-id="page-6">
-				<h3><span id="text-17" contenteditable="true">Gosh, does this girl like me?</span><br /><span id="text-18" contenteditable="true"></span></h3>
-				<img src="img/10.png" tppabs="img/10.png" />
-			</div>
-			<div id="/section-3/page-7" class="ft-page page-17 top-text" data-id="page-7">
-				<h3 id="text-19" contenteditable="true">I thought I had chance to have you</h3>
-				<img src="" tppabs="" />
-			</div>
-		</div>
-		<div class="ft-section section-4" data-id="section-4">
-			<div id="/section-4/page-1" class="ft-page page-18 full-img" data-id="page-1">
-				<p class="text" id="text-20" contenteditable="true">Then I started to like you but I didn't tell you baby</p>
-				<img src="" tppabs=""  />
-			</div>
-			<div id="/section-4/page-2" class="ft-page page-19" data-id="page-2">
-				<h3 id="text-21" contenteditable="true">Cuz I am 7 years older than you baby</h3>
-				<img src="img/11.png" tppabs="img/11.png" />
-			</div>
-			<div id="/section-4/page-3" class="ft-page page-20" data-id="page-3">
-				<img src="img/iali59.png" tppabs="img/iali59.png" />
-				<h3 id="text-22" contenteditable="true">But we flirted with each other more and more</h3>
-				<img src="img/iali9.jpg" tppabs="img/iali9.jpg" />
-			</div>
-			<div id="/section-4/page-4" class="ft-page page-21" data-id="page-4">
-				<h3 id="text-23" contenteditable="true">I was too clumsy that I didn't realize that</h3>
-				<img src="img/iali59.png" tppabs="img/iali59.png" />
-			</div>
-			<div id="/section-4/page-5" class="ft-page page-22 left-img" data-id="page-5">
-				<h3 id="text-24" contenteditable="true">You already started to like me before 22th</h3>
-				<img src="img/iali4.jpg" tppabs="img/iali4.jpg" />
-			</div>
-			<div id="/section-4/page-6" class="ft-page page-23 left-img" data-id="page-6">
-				<h3 id="text-25" contenteditable="true">And because of the difference of culture</h3>
-				<img src="img/iali44.jpg" tppabs="img/iali44.jpg" />
-			</div>
-			<div id="/section-4/page-7" class="ft-page page-24 full-img" data-id="page-7">	
-				<h3 id="text-26" contenteditable="true">You didn't get that we were already together</h3>
-				<img src="img/iali32.jpg" tppabs="img/iali32.jpg" />
-			</div>
-		</div>
-		<div class="ft-section section-5" data-id="section-5">
-			<div id="/section-5/page-1" class="ft-page page-25 left-img" data-id="page-1">
-				<h3><span id="text-27" contenteditable="true">But luckily at last we both made it sure on 26th</span><br /><span id="text-28" contenteditable="true"></span></h3>
-				<img src="img/iali37.jpg" tppabs="img/iali37.jpg" />
-			</div>
-			<div id="/section-5/page-2" class="ft-page page-26 top-text" data-id="page-2">
-				<h3 id="text-29" contenteditable="true">After that my baby even if we had arguements</h3>
-				<img src="img/iali10.gif" tppabs="img/iali10.gif" />
-			</div>
-			<div id="/section-5/page-3" class="ft-page page-27" data-id="page-3">
-				<h3 id="text-30" contenteditable="true">I love you more and more and more</h3>
-				<img src="img/iali67.jpg" tppabs="img/iali67.jpg"  />
-			</div>
-			<div id="/section-5/page-4" class="ft-page page-28" data-id="page-4">
-				<h3 id="text-31" contenteditable="true">You care about me soooooo much</h3>
-				<img src="img/iali40.jpg" tppabs="img/iali40.jpg" />
-			</div>
-			<div id="/section-5/page-5" class="ft-page page-29" data-id="page-5">
-				<h3 id="text-32" contenteditable="true">You care about my sleep</h3>
-				<img src="img/iali12.jpg" tppabs="img/iali12.jpg" />
-			</div>
-			<div id="/section-5/page-6" class="ft-page page-30" data-id="page-6">
-				<h3 id="text-33" contenteditable="true">You care about my work</h3>
-				<img src="img/iali76.gif" tppabs="img/iali76.gif" />
-			</div>
-			<div id="/section-5/page-7" class="ft-page page-31" data-id="page-7">
-				<h3 id="text-34" contenteditable="true">You care about my health</h3>
-				<img src="img/iali77.jpg" tppabs="img/iali77.jpg" />
-			</div>
-		</div>
-		<div class="ft-section section-6" data-id="section-6">
-			<div id="/section-6/page-1" class="ft-page page-32" data-id="page-1">
-				<h3 id="text-35" contenteditable="true">You care about my daily life</h3>
-				<img src="img/iali62.jpg" tppabs="img/iali62.jpg"  />
-			</div>
-			<div id="/section-6/page-2" class="ft-page page-33 top-text" data-id="page-2">
-				<h3 id="text-36" contenteditable="true">You care about my meals</h3>
-				<img src="img/iali3.jpg" tppabs="img/iali3.jpg" />
-			</div>
-			<div id="/section-6/page-3" class="ft-page page-34 left-img" data-id="page-3">
-				<h3 id="text-37" contenteditable="true">You care about my clothes</h3>
-			</div>
-			<div id="/section-6/page-4" class="ft-page page-35" data-id="page-4">
-				<h3><span id="text-38" contenteditable="true">How can I resist you baby</span><br /><span id="text-39" contenteditable="true"></span><br /><span id="text-40" contenteditable="true"></span></h3>
-				<img src="img/iali8.gif" tppabs="img/iali8.gif" />
-			</div>
-			<div id="/section-6/page-5" class="ft-page page-36 full-img" data-id="page-5">
-				<h3 id="text-41" contenteditable="true">And you even send me a reminder</h3>
-				<img src="img/iali31.jpg" tppabs="img/iali31.jpg" />
-			</div>
-			<div id="/section-6/page-6" class="ft-page page-37 left-img" data-id="page-6">
-				<h3 id="text-42" contenteditable="true">It's soooooo adorable and sweet baby</h3>
-				<img src="img/iali49.jpg" tppabs="img/iali49.jpg" />
-			</div>
-			<div id="/section-6/page-7" class="ft-page page-38 bottom-text" data-id="page-7">
-				<img src="img/iali21.jpg" tppabs="img/iali21.jpg" />
-				<h3 id="text-43" contenteditable="true">I just want you to be my forever wife</h3>
-			</div>
-		</div>
-		<div class="ft-section section-7" data-id="section-7">
-			<div id="/section-7/page-1" class="ft-page page-39 left-img" data-id="page-1">
-				<h3 id="text-44" contenteditable="true">I have lots of words to whisper to you</h3>
-				<img src="img/iali2.jpg" tppabs="img/iali2.jpg" />
-			</div>
-			<div id="/section-7/page-2" class="ft-page page-40" data-id="page-2">
-				<h3 id="text-45" contenteditable="true">I have lots of things to share with you</h3>
-				<img src="img/iali14.jpg" tppabs="img/iali14.jpg"  />
-			</div>
-			<div id="/section-7/page-3" class="ft-page page-41" data-id="page-3">
-				<img src="img/iali30_1.jpg" tppabs="img/iali30_1.jpg" class='img1'/>
-				<img src="img/iali30_2.jpg" tppabs="img/iali30_2.jpg" class='img2'/>
-				<h3 id="text-46" contenteditable="true">I have a menu for you to order at home</h3>
-			</div>
-			<div id="/section-7/page-4" class="ft-page page-42" data-id="page-4">
-				<h3><span id="text-47" contenteditable="true">We have lots of places to go together</span><br /><span id="text-48" contenteditable="true"></span></h3>
-				<img src="img/iali69.jpg" tppabs="img/iali69.jpg"  />
-			</div>
-			<div id="/section-7/page-5" class="ft-page page-43" data-id="page-5">
-				<img src="img/iali42.jpg" tppabs="img/iali42.jpg" />
-				<h3 id="text-49" contenteditable="true">I have lots of cuddles and kisses for you</h3>
-			</div>
-			<div id="/section-7/page-6" class="ft-page page-44 left-img" data-id="page-6">
-				<h3><span id="text-50" contenteditable="true">We will have a house</span><br /><span id="text-51" contenteditable="true"></span></h3>
-				<img src="img/iali0.jpg" tppabs="img/iali0.jpg" />
-			</div>
-			<div id="/section-7/page-7" class="ft-page page-45 left-img" data-id="page-7">
-				<h3><span id="text-52" contenteditable="true">We will have little 闵文</span><br /><span id="text-53" contenteditable="true"></span></h3>
-				<img src="img/iali18.jpg" tppabs="img/iali18.jpg" />
-			</div>
-		</div>
-		<div class="ft-section section-8" data-id="section-8">
-			<div id="/section-8/page-1" class="ft-page page-46" data-id="page-1">
-				<img src="img/iali57.gif" tppabs="img/iali57.gif" />
-				<h3>
-					<span id="text-54" contenteditable="true">We will watch videos together</span>
-				</h3>
-			</div>
-			<div id="/section-8/page-2" class="ft-page page-47 top-text" data-id="page-2">
-				<img src="img/iali58.jpg" tppabs="img/iali58.jpg" />
-				<h3>
-					<span id="text-58" contenteditable="true">We will play games together</span>
-				
-			</div>
-			<div id="/section-8/page-3" class="ft-page page-48 left-img" data-id="page-3">
-				<p><span id="text-62" contenteditable="true">We will eat together</span><br /><span id="text-63" contenteditable="true"></span></p>
-				<img src="img/iali65.jpg" tppabs="img/iali65.jpg"  />
-			</div>
-			<div id="/section-8/page-4" class="ft-page page-49 left-img" data-id="page-4">
-				<p class="text">
-					<span class='text' id="text-64" contenteditable="true">I only and always want you my baby wife</span>
-				</p>
-			<img src="img/iali71.jpg" tppabs="img/iali71.jpg" />
-				
-			</div>
-			<div id="/section-8/page-5" class="ft-page page-50" data-id="page-5">
-				<p class='text' id="text-66" contenteditable="true">I love you soooooooooo much my baby wife always and forever more than you know</p>
-				<img src="img/iali50_1.jpg" tppabs="img/iali50_1.jpg" class='img1' />
-				<img src="img/iali50_2.jpg" tppabs="img/iali50_2.jpg" class='img2' />
-			</div>
-			<div id="/section-8/page-6" class="ft-page page-51" data-id="page-6">
-				<p>
-					<span id="text-67" contenteditable="true">Let's make more memories my baby wife</span><br />
-					<span id="text-68" contenteditable="true"></span><br />
-					<span id="text-69" contenteditable="true"></span><br />
-					<span id="text-70" contenteditable="true"></span>
-					</p>
-			</div>
-		</div>
-		<div class="ft-section section-9" data-id="section-9">
-			<div id="/section-9/page-1" class="ft-page page-52 full-img" data-id="page-1">
-				<h3 id="text-71" contenteditable="true">I'm your forever husband</h3>
-				<img src="img/iali20.jpg" tppabs="img/iali20.jpg"  />
-			</div>
-			<div id="/section-9/page-2" class="ft-page page-53" data-id="page-2">
-				<img src="img/iali68.jpg" tppabs="img/iali68.jpg" alt='happy birthday' />
-				<h3 id="text-72" contenteditable="true">我爱你</h3>
-			</div>
-			<div id="/section-9/page-3" class="ft-page page-54 center-img" data-id="page-3" >
-				<div class="center-img">I love you</div>
-			</div>
-			<div id="/section-9/page-4" class="ft-page page-55 right-img" data-id="page-4">
-				<img src="img/14915.jpg" tppabs="img/14915.jpg" />
-				<p class="text">
-					<span id="text-73" contenteditable="true">BaBy wife, let's get married</span><br />
-					<span id="text-74" contenteditable="true"></span><br />
-                    <span id="text-74" contenteditable="true"></span><br />
-					<br />
-					<br />
-					<span> -- Press “Esc" for surprise</span>
-				</p>				
-			</div>
-		</div>
-	</div>
-	<div class="nojavascript">您的浏览器禁用了javascript，无法正常浏览本页面</div>
-	
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1>6 Months Together</h1>
+            <div class="subtitle">Minwen & Anna's Journey</div>
+        </header>
+        
+        <div class="couple-container">
+            <div class="person minwen">
+                <div class="avatar">M</div>
+                <div class="name">Minwen</div>
+            </div>
+            
+            <div class="heart">❤️</div>
+            
+            <div class="person anna">
+                <div class="avatar">A</div>
+                <div class="name">Anna</div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">6 Months Ago</div>
+                    <p>The day we met and our journey began</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">First Month</div>
+                    <p>Getting to know each other, discovering shared interests</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Month 3</div>
+                    <p>Creating beautiful memories together</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Today</div>
+                    <p>Celebrating 6 months of love and happiness</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message">
+            <h2>To Many More Months Together</h2>
+            <p>Half a year of laughter, adventures, and growing together. Here's to our beautiful journey and the many more months to come!</p>
+        </div>
+        
+        <footer>
+            <p>Made with ❤️ for Minwen & Anna</p>
+        </footer>
+    </div>
 
-	<audio id="bgmMusic" src="lovebgm.mp3" autoplay="autoplay" loop preload="auto" type="audio/mp3"></audio>
-
-	
-	<script src="jquery.min.js" tppabs="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-	<script src="all.min.js" ></script>
-	<script src="love.min.js" ></script>
-	<div class="mPower"><span id="on" title="点击暂停" style=""></span><span id="off" title="点击播放"  style=""></span></div>
-
-	
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const hearts = ['❤️', '💖', '💕', '💗', '💓', '💞'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                
+                // Random position and animation delay
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            
+            // Add scroll animation to timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
