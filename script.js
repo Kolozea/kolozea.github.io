@@ -2,7 +2,7 @@ const loadingEl = document.querySelector("#loading");
 const canvas = document.querySelector("#scene");
 
 if (!window.THREE) {
-  loadingEl.textContent = "three.js 加载失败，请检查 vendor/three.min.js 是否存在";
+  loadingEl.textContent = "Failed to load three.js. Please check whether vendor/three.min.js exists.";
   throw new Error("THREE is not available");
 }
 
@@ -203,9 +203,9 @@ function pickConstellationHome(slot) {
 }
 
 function updateLoading() {
-  loadingEl.textContent = `照片加载中 ${loadedCount}/${photoFiles.length}`;
+  loadingEl.textContent = `Loading photos ${loadedCount}/${photoFiles.length}`;
   if (loadedCount >= photoFiles.length) {
-    loadingEl.textContent = "加载完成";
+    loadingEl.textContent = "Loading complete";
     setTimeout(() => {
       loadingEl.style.display = "none";
     }, 1200);
