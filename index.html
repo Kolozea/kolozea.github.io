@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeartSync P2P ❤️</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <!-- Login Page -->
+  <div id="auth-page" class="auth-page">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1>HeartSync P2P</h1>
+        <p class="subtitle">Connect directly, no servers needed 💕</p>
+        <div id="login-error" class="error-msg"></div>
+        <form id="login-form" onsubmit="return false;">
+          <div class="form-group">
+            <label>Choose a nickname</label>
+            <input type="text" id="login-username" placeholder="Enter your name" maxlength="20" required>
+          </div>
+          <button class="btn btn-primary" type="submit" onclick="enterApp()">Join ❤️</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard-page">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>HeartSync</h2>
+        <span class="user-badge" id="user-badge" onclick="logout()">Me</span>
+      </div>
+      <div class="sidebar-tabs">
+        <div class="sidebar-tab active" data-tab="chat" onclick="switchTab('chat')">💬 Chat</div>
+        <div class="sidebar-tab" data-tab="connect" onclick="switchTab('connect')">🔗 Connect</div>
+      </div>
+      <div class="sidebar-content">
+        <!-- Chat -->
+        <div id="chat-panel" class="sidebar-panel active">
+          <div id="status-bar" class="typing-indicator show" style="text-align:center;padding:8px;border-bottom:1px solid var(--border-color);color:var(--text-muted);">
+            ⏳ Waiting for connection...
+          </div>
+          <div id="chat-messages" class="chat-messages">
+            <div class="chat-empty">No messages yet.<br>Connect with your partner first! 💌</div>
+          </div>
+          <div id="typing-indicator" class="typing-indicator"></div>
+          <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
+            <button class="btn btn-primary" onclick="sendMessage()">➤</button>
+          </div>
+        </div>
+        <!-- Connect -->
+        <div id="connect-panel" class="sidebar-panel">
+          <div class="pairing-status">
+            <div class="heart-icon" id="heart-icon">💔</div>
+            <h3 id="conn-status">Not Connected</h3>
+            <div class="pairing-code-box">
+              <div class="label">Your Peer ID (share this)</div>
+              <div class="code" id="my-peer-id">------</div>
+            </div>
+            <div style="margin-top:16px;text-align:left;">
+              <label style="color:var(--text-secondary);font-size:0.9rem;">Enter partner's Peer ID:</label>
+              <div class="pairing-input-group">
+                <input type="text" id="peer-input" placeholder="Paste their ID" onkeydown="if(event.key==='Enter')connectToPeer()">
+                <button class="btn btn-primary btn-small" onclick="connectToPeer()">Connect</button>
+              </div>
+            </div>
+            <div style="margin-top:16px;text-align:center;">
+              <button id="disconnect-btn" class="btn btn-danger btn-small" style="display:none;" onclick="disconnect()">💔 Disconnect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-content">
+      <div id="map"></div>
+      <div class="map-controls">
+        <button class="btn" onclick="centerOnMe()" title="Center on me">📍</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
