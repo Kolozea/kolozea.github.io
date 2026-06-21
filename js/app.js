@@ -72,6 +72,14 @@ function initPeer() {
 
   state.peer = new Peer(peerId, {
     debug: 2,
+    config: {
+      iceServers: [
+        { urls: 'stun:stun.qq.com' },
+        { urls: 'stun:stun.miwifi.com' },
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' },
+      ],
+    },
   });
 
   let opened = false;
@@ -116,6 +124,24 @@ function initPeer() {
       showToast('⏳ Connecting to PeerJS signaling server...', 'warning');
     }
   }, 10000);
+}
+
+/** Copy Peer ID to clipboard */
+function copyPeerId() {
+  const id = $('my-peer-id').textContent;
+  if (!id || id.includes('connecting')) return;
+  navigator.clipboard.writeText(id).then(() => {
+    showToast('📋 Peer ID copied!', 'success');
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = id;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    showToast('📋 Peer ID copied!', 'success');
+  });
 }
 
 /** Generate a fresh Peer ID (clicking "New ID" button) */
